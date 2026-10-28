@@ -85,6 +85,7 @@
             <button class="tab" role="tab" aria-selected="false" data-tab="t-hasil"><svg class="ic"><use href="#i-hasil"/></svg><span>Hasil &amp; nilai</span></button>
             <button class="tab" role="tab" aria-selected="false" data-tab="t-siswa"><svg class="ic"><use href="#i-hp"/></svg><span>Siswa &amp; HP</span></button>
             <button class="tab" role="tab" aria-selected="false" data-tab="t-token"><svg class="ic"><use href="#i-token"/></svg><span>Token</span></button>
+            <button class="tab" role="tab" aria-selected="false" data-tab="t-kartu"><svg class="ic"><use href="#i-kartu"/></svg><span>Cetak Cepat Kartu</span></button>
             <div class="nav-group">Laporan &amp; analisis</div>
             <button class="tab" role="tab" aria-selected="false" data-tab="t-laporan"><svg class="ic"><use href="#i-laporan"/></svg><span>Laporan PDF</span></button>
             <button class="tab" role="tab" aria-selected="false" data-tab="t-rekap"><svg class="ic"><use href="#i-rekap"/></svg><span>Rekap &amp; Export</span></button>
@@ -120,7 +121,12 @@
               <input class="input" id="cariPantau" placeholder="Cari nama siswa…">
               <select class="input" id="filterKelas" style="flex:0 1 180px" aria-label="Filter kelas"></select>
             </div>
-            <div class="students" id="students"></div>
+            <div class="table-wrap">
+              <table class="tbl" id="tblPantau">
+                <thead><tr><th>No</th><th>Nama</th><th>Kelas</th><th>Username</th><th>Status</th><th>Progres</th><th>Terjawab</th><th>Pelanggaran</th><th>Sisa waktu</th><th>Update terakhir</th></tr></thead>
+                <tbody id="students"></tbody>
+              </table>
+            </div>
           </div>
 
           <div class="board tabpane hidden" id="t-hasil">
@@ -310,6 +316,29 @@
             </form>
           </div>
 
+          <!-- CETAK CEPAT KARTU -->
+          <div class="board tabpane hidden" id="t-kartu">
+            <div class="pane-head"><h2>Cetak Cepat Kartu Siswa</h2><p>Pilih siswa lalu cetak langsung atau unduh sebagai ZIP berisi gambar PNG (<b>nama_siswa.PNG</b>). Kartu memuat username &amp; password.</p></div>
+            <div class="toolbar-guru">
+              <select class="input" id="kartuPaket" style="flex:0 1 240px" aria-label="Paket soal"></select>
+              <select class="input" id="kartuKelas" style="flex:0 1 150px" aria-label="Kelas"></select>
+              <select class="input" id="kartuTema" style="flex:0 1 170px" aria-label="Warna kartu"></select>
+              <input class="input" id="kartuCari" placeholder="Cari nama / username…">
+            </div>
+            <div class="toolbar-guru">
+              <label class="small"><input type="checkbox" id="kartuSemua"> Pilih semua yang tampil</label>
+              <span class="small muted" id="kartuInfo"></span>
+              <button class="btn btn-blue btn-sm" id="btnKartuCetak">Cetak terpilih</button>
+              <button class="btn btn-green btn-sm" id="btnKartuZip">Unduh ZIP (PNG)</button>
+            </div>
+            <div class="table-wrap">
+              <table class="tbl" id="tblKartu">
+                <thead><tr><th style="width:36px"></th><th>Nama</th><th>Kelas</th><th>Username</th><th>Password</th><th>Aksi</th></tr></thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+
           <!-- DATA SISWA -->
           <div class="board tabpane hidden" id="t-master-siswa">
             <div class="pane-head"><h2>Data Siswa</h2><p>Daftar akun siswa dari sheet USER. Siswa baru perlu menekan <b>Perbarui data</b> di HP agar bisa login.</p></div>
@@ -317,8 +346,10 @@
               <button class="btn btn-green btn-sm" id="btnTambahSiswa">Tambah Siswa</button>
               <button class="btn btn-blue btn-sm" id="btnImportSiswa">Import CSV / Paste Excel</button>
               <button class="btn btn-wood btn-sm" id="btnTemplateSiswa">Template CSV</button>
+              <select class="input" id="filterMasterPaket" style="flex:0 1 260px" aria-label="Tampilkan siswa berdasarkan paket soal"></select>
               <input class="input" id="cariMasterSiswa" placeholder="Cari username / nama…">
             </div>
+            <p class="small muted" id="infoMasterSiswa" style="margin:-4px 0 12px"></p>
             <div class="table-wrap">
               <table class="tbl" id="tblMasterSiswa">
                 <thead><tr><th>Username</th><th>Password</th><th>Nama</th><th>Kelas</th><th>Aksi</th></tr></thead>

@@ -246,3 +246,12 @@ body.guru {
   .guru .brand-sub { max-width: 46vw; }
   .g-login-card { margin: 20px auto; padding: 22px 18px; }
 }
+
+/* Pantau langsung — tampilan tabel */
+.guru tr.stu { background: transparent; border: 0; border-radius: 0; padding: 0; }
+.guru tr.stu .prog { margin: 0; }
+.guru .pill.st-MENGERJAKAN, .guru .pill.st-TERHENTI { background: var(--g-danger-50); color: var(--g-danger); }
+.guru .pill.st-SELESAI { background: var(--g-warning-50); color: var(--g-warning); }
+.guru .pill.st-TERKIRIM { background: var(--g-primary-50); color: var(--g-primary); }
+.guru .pill.st-LOGIN { background: var(--g-success-50); color: var(--g-success); }
+.guru .tbl code { font-family: Consolas, "Courier New", monospace; font-size: .88rem; background: var(--g-surface-2); padding: 1px 6px; border-radius: 4px; }

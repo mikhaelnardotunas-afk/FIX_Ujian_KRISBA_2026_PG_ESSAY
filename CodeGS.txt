@@ -747,6 +747,9 @@ function apiGuruData_(d) {
   var id = str_(d.paket) || (pakets[0] && pakets[0].id) || '';
   var paket = pakets.filter(function (p) { return p.id === id; })[0] || null;
   var base = { ok: true, sekolah: getSetting_('NAMA_SEKOLAH'), pakets: pakets, paket: paket, waktuServer: Date.now() };
+  // Seluruh akun siswa + password (khusus dashboard guru; sudah lewat cekGuru_)
+  base.semuaUsers = table_(SH.USER).rows.filter(function (u) { return str_(u.USERNAME); })
+    .map(function (u) { return { u: str_(u.USERNAME).toLowerCase(), n: str_(u.NAMA), k: str_(u.KELAS).toUpperCase(), p: str_(u.PASSWORD) }; });
   if (!paket) return base;
 
   var soal = soalPaket_(id);

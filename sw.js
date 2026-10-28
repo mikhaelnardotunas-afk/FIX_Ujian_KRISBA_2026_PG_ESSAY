@@ -1,6 +1,6 @@
-/* Service worker — membuat aplikasi bisa dibuka tanpa internet.
+﻿/* Service worker — membuat aplikasi bisa dibuka tanpa internet.
    Setiap kali Anda mengubah file website, naikkan angka VERSI agar HP siswa ikut terbarui. */
-const VERSI = 'ue2-v6-auto';
+const VERSI = 'ue2-v7-kartu';
 const SHELL = [
   './', './index.html', './kuis.html', './guru.html', './Cetak_Kartu.html', './config.js', './manifest.json',
   './assets/style.css', './assets/guru.css', './assets/common.js', './assets/app.js', './assets/guru.js', './assets/laporan.js',
